@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dark="false">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html {
+      --color1: lime;
+      --color2: blue;
+    }
+
+    html[dark] {
+      --color1: red;
+      --color2: purple;
+    }
+
+    body {
+      background: var(--color1);
+      color: var(--color2);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: var(--color1);
+        color: var(--color2);
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <p>Hello World</p>
+
+  <script>
+
+    // var documentElement = document.getElementsByTagName("html");
+    // documentElement.setAtt
+    if (window.matchMedia("prefers-color-scheme: dark").matches) {
+      document.getElementsByTagName("html").setAttribute("dark")
+    }
+    else {
+      document.getElementsByTagName("html").removeAttribute("dark")
+      // documentElement.setAttribute("dark", "true") 
+    }
+    console.log(window.matchMedia("prefers-color-scheme: dark").matches)
+  </script>
+</body>
+
+</html>

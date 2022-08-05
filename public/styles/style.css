@@ -1,0 +1,245 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: monospace;
+}
+
+:root {
+	--color1: #404eff;
+
+	--topHeight: 60px;
+}
+
+section,
+article,
+footer {
+	display: block;
+}
+
+#topBar {
+	width: 100%;
+	height: var(--topHeight);
+	background: #fff;
+	color: var(--color1);
+	border-bottom: var(--color1) 2px solid;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 12px;
+	font-size: 24px;
+	font-style: bold;
+	z-index: 1;
+}
+
+#mainBody {
+	margin: 12px;
+	border: #cccccc 2px solid;
+	padding: 12px;
+	border-radius: 3px;
+}
+
+#mainTitle {
+	color: var(--color1);
+	padding: 12px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 15px;
+	border-bottom: #ccc 1px solid;
+}
+
+#langSelect {
+	width: 60px;
+	height: 30px;
+	border: #ccc 2px solid;
+	border-radius: 3px;
+	padding: auto 6px;
+	display: flex;
+	justify-content: space-between;
+	padding: 6px;
+}
+
+#dictBar {
+	padding-top: 12px;
+}
+
+#dictBar>form {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.dictInput {
+	height: 45px;
+	padding: 12px 6px;
+	border: #ccc 2px solid;
+}
+
+.dictInput:focus {
+	border: var(--color1) 2px solid;
+	outline: none;
+}
+
+#searchWord {
+	width: 80%;
+	border-right: #fff 0px solid;
+	border-radius: 3px 0 0 3px;
+}
+
+#searchWord:focus {
+	border-right: var(--color1) 2px solid;
+}
+
+#searchWord:hover {
+	background: rgb(225, 225, 225);
+}
+
+#searchButton {
+	width: 20%;
+	border-left: #fff 0px solid;
+	border-radius: 0 3px 3px 0;
+}
+
+#searchButton:focus {
+	border-left: var(--color1) 2px solid;
+}
+
+#resultSection {
+	padding-top: 12px;
+	color: var(--color1);
+}
+
+#resultWord {
+	font-size: 30px;
+	font-weight: bolder;
+}
+
+#resultSpell {
+	font-size: 15px;
+}
+
+#resultTop {
+	padding: 0 0 0 6px;
+	border-left: var(--color1) 2px solid;
+	border-radius: 2px;
+}
+
+#spellBar {
+	margin-top: 12px;
+	display: grid;
+
+	grid-row-gap: 6px;
+}
+
+.spellCard {
+	height: 45px;
+	width: 50%;
+	padding: 6px;
+	display: flex;
+	border: #ccc 1px solid;
+	border-radius: 3px;
+}
+
+.spellAudio {
+	height: 100%;
+	margin-right: 12px;
+}
+
+.spellAudio>button {
+	height: 30px;
+	width: 30px;
+	color: var(--color1);
+	background: none;
+	border: var(--color1) 1px solid;
+	border-radius: 50%;
+}
+
+.spellTitle {
+	font-weight: bolder;
+}
+
+.definitionBatch {
+	border-left: var(--color1) 2px solid;
+	border-radius: 3px;
+	position: relative;
+	padding: 45px 0 12px 6px;
+	margin-top: 12px;
+}
+
+.partOfSpeech {
+	font-size: 15px;
+	font-weight: bold;
+	border: var(--color1) 1px solid;
+	border-radius: 3px 3px 3px 0;
+	padding: 6px 18px 6px 6px;
+	position: absolute;
+	left: -2px;
+	top: 0;
+}
+
+.definitionCard {
+	border-bottom: #ccc 1px solid;
+	margin-bottom: 6px;
+}
+
+.definitionCard:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+}
+
+.definitionNyms>div {
+	margin: 6px 0;
+}
+
+.nymTitle {
+	font-weight: bold;
+	margin-top: 6px;
+}
+
+footer {
+	background: var(--color1);
+	color: #fff;
+	padding: 60px 12px;
+	margin-top: 60px;
+}
+
+.footerBox {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.footerBoxTitle {
+	font-weight: bold;
+	padding-bottom: 3px;
+	border-bottom: #ccc 1px solid;
+	margin-bottom: 12px;
+}
+
+.footerLinkBox {
+	display: flex;
+	flex-direction: column;
+
+}
+
+.footerLinkBox>nav>ul {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.footerLink {
+	margin-bottom: 6px;
+}
+
+.footerLink>a {
+	color: #fff;
+	text-decoration: none;
+}
