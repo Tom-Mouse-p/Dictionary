@@ -6,7 +6,15 @@
 }
 
 :root {
-	--color1: #404eff;
+	--color1: rgb(64, 77, 255);
+
+	--color2: rgba(204, 204, 204);
+	--color2-lt: rgba(204, 204, 204, 0.8);
+	--color2-md: rgba(204, 204, 204, 0.5);
+	--color2-xlt: rgba(204, 204, 204, 0.2);
+
+	/* --color1-1: rgb(64, 77, 255, 0.2); */
+	/* --color1: #404eff; */
 
 	--topHeight: 60px;
 }
@@ -40,7 +48,7 @@ footer {
 	margin: 12px;
 	border: #cccccc 2px solid;
 	padding: 12px;
-	border-radius: 3px;
+	border-radius: 6px;
 }
 
 #mainTitle {
@@ -88,7 +96,7 @@ footer {
 
 #searchWord {
 	width: 80%;
-	border-right: #fff 0px solid;
+	border-right: none;
 	border-radius: 3px 0 0 3px;
 }
 
@@ -97,17 +105,23 @@ footer {
 }
 
 #searchWord:hover {
-	background: rgb(225, 225, 225);
+	background: var(--color2-xlt);
 }
 
 #searchButton {
 	width: 20%;
-	border-left: #fff 0px solid;
+	background: var(--color2-md);
+	color: var(--color1);
+	border-left: none;
 	border-radius: 0 3px 3px 0;
 }
 
 #searchButton:focus {
 	border-left: var(--color1) 2px solid;
+}
+
+#searchButton:hover {
+	background: var(--color2-lt);
 }
 
 #resultSection {
