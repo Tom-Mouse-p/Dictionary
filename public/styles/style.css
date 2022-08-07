@@ -25,6 +25,14 @@ footer {
 	display: block;
 }
 
+.hidden{
+	display: none;
+}
+
+.thinItalics{
+	font-style: italic;
+	color: var(--color2);
+}
 #topBar {
 	width: 100%;
 	height: var(--topHeight);
@@ -165,6 +173,11 @@ footer {
 	margin-right: 12px;
 }
 
+.spellAudio>button>svg {
+	height: 100%;
+	width: 100%;
+}
+
 .spellAudio>button {
 	height: 30px;
 	width: 30px;
@@ -172,6 +185,7 @@ footer {
 	background: none;
 	border: var(--color1) 1px solid;
 	border-radius: 50%;
+	cursor: pointer;
 }
 
 .spellTitle {
