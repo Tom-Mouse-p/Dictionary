@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   search("N");
-  var loder = document.getElementById("topLoader");
-  loder.style.display = "none";
+  setTimeout(() => {
+    var loder = document.getElementById("topLoader");
+    loder.style.display = "none";
+  }, "2000")
 })
 
 document.querySelector("#searchButton").addEventListener("click", () => {
@@ -19,7 +21,7 @@ function search(defaultValue) {
 
   var dictInput;
   if (defaultValue == "N") {
-    dictInput = "Apple";
+    dictInput = "Mango";
   } else {
     dictInput = document.querySelector("#searchWord").value.trim();
   }
@@ -33,6 +35,7 @@ function search(defaultValue) {
       var org = data;
       var dataString = JSON.stringify(org);
 
+      // navigator.clipboard.writeText(dataString);
       var nm = 1;
       const spellBar = document.querySelector("#spellBar");
       spellBar.innerHTML = "";
@@ -187,12 +190,43 @@ function search(defaultValue) {
       
       var word = org[0].word;
       var phonetic = org[0].phonetic;
-
+      
       document.querySelector("#resultWord").innerText = word.toUpperCase();
-      document.querySelector("#resultSpell").innetText = phonetic;
+
+      if (phonetic) {
+        document.querySelector("#resultSpell").innerText = phonetic;
+      } else {
+        document.querySelector("#resultSpell").classList.add("thinItalics");
+        document.querySelector("#resultSpell").innerText = "/Phonetic not found/";
+      }
+
+      org[0].meanings.forEach(element => {
+        const definitionBatch = document.createElement("div");
+        definitionBatch.classList.add("definitionBatch");
+        
+        const partOfSpeech = document.createElement("div");
+        partOfSpeech.classList.add("partOfSpeech");
+        partOfSpeech.innerText = element.partOfSpeech;
+        
+        element.definitions.forEach(def => {
+          const definitionCard = document.createElement("div");
+          definitionCard.classList.add("definitionCard");
+
+          const definations = document.createElement("div");
+          definations.classList.add("definations");
+
+          definations.innerText= def.definition;
+
+          console.log(definations);
+          
+        });
+        // console.log(element.partOfSpeech);
+        // document.querySelector("").innerText = ;
+
+      });
       // document.querySelector("").innerText = ;
-      // document.querySelector("").innerText = ;
-      // document.querySelector("").innerText = ;
+
+
     });
 }
 
