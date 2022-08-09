@@ -1,27 +1,26 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   search("N");
   setTimeout(() => {
     var loder = document.getElementById("topLoader");
     loder.style.display = "none";
-  }, "2000")
-})
+  }, "2000");
+});
 
 document.querySelector("#searchButton").addEventListener("click", () => {
   search("Y");
 });
 
 document.getElementById("searchWord").addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
+  if (e.key === "Enter") {
     e.preventDefault();
     search("Y");
   }
 });
 
 function search(defaultValue) {
-
   var dictInput;
   if (defaultValue == "N") {
-    dictInput = "Mango";
+    dictInput = "Pleasure";
   } else {
     dictInput = document.querySelector("#searchWord").value.trim();
   }
@@ -33,6 +32,7 @@ function search(defaultValue) {
     .then((response) => response.json())
     .then((data) => {
       var org = data;
+      // console.log(org[0].meanings[0].definitions);
       var dataString = JSON.stringify(org);
 
       // navigator.clipboard.writeText(dataString);
@@ -187,45 +187,96 @@ function search(defaultValue) {
         }
       });
 
-      
       var word = org[0].word;
       var phonetic = org[0].phonetic;
-      
+
       document.querySelector("#resultWord").innerText = word.toUpperCase();
 
       if (phonetic) {
         document.querySelector("#resultSpell").innerText = phonetic;
       } else {
         document.querySelector("#resultSpell").classList.add("thinItalics");
-        document.querySelector("#resultSpell").innerText = "/Phonetic not found/";
+        document.querySelector("#resultSpell").innerText =
+          "/Phonetic not found/";
       }
 
-      org[0].meanings.forEach(element => {
+      const definitionResult = document.getElementById("definitionResult");
+      // console.log(definitionResult);
+      definitionResult.classList.add("definitionResult");
+      definitionResult.innerText = "";
+
+      org[0].meanings.forEach((element) => {
         const definitionBatch = document.createElement("div");
         definitionBatch.classList.add("definitionBatch");
-        
+
         const partOfSpeech = document.createElement("div");
         partOfSpeech.classList.add("partOfSpeech");
         partOfSpeech.innerText = element.partOfSpeech;
-        
-        element.definitions.forEach(def => {
+
+        definitionBatch.appendChild(partOfSpeech);
+
+        const definitionBar = document.createElement("div");
+        definitionBar.classList.add("definitionBar");
+
+        element.definitions.forEach((def) => {
           const definitionCard = document.createElement("div");
           definitionCard.classList.add("definitionCard");
 
           const definations = document.createElement("div");
           definations.classList.add("definations");
 
-          definations.innerText= def.definition;
+          definations.innerText = def.definition;
 
-          console.log(definations);
-          
+          const definitionNyms = document.createElement("div");
+          definitionNyms.classList.add("definitionNyms");
+          const div1 = document.createElement("div");
+          const div2 = document.createElement("div");
+          const nymTitle1 = document.createElement("span");
+          nymTitle1.classList.add("nymTitle");
+          const nymTitle2 = document.createElement("span");
+          nymTitle2.classList.add("nymTitle");
+          const antonyms1 = document.createElement("span");
+          antonyms1.classList.add("antonyms");
+          const antonyms2 = document.createElement("span");
+          antonyms2.classList.add("antonyms");
+
+          nymTitle1.innerText = "Synonyms : ";
+          nymTitle2.innerText = "Antonyms : ";
+
+          if (def.synonyms[0]) {
+            antonyms1.innerText = def.synonyms;
+          } else {
+            antonyms1.classList.add("thinItalics");
+            antonyms1.innerText = "Antonyms not found";
+          }
+          if (def.antonyms[0]) {
+            antonyms2.innerText = def.antonyms;
+          } else {
+            antonyms2.classList.add("thinItalics");
+            antonyms2.innerText = "Synonyms Not Found";
+          }
+          // antonyms1.innerText = def.synonyms;
+          // console.log(def.synonyms);
+          // console.log(def.antonyms);
+          // console.log(def);
+          // antonyms2.innerText = def.antonyms;
+
+          definitionCard.appendChild(definations);
+          div1.appendChild(nymTitle1);
+          div1.appendChild(antonyms1);
+          div2.appendChild(nymTitle2);
+          div2.appendChild(antonyms2);
+          definitionNyms.appendChild(div1);
+          definitionNyms.appendChild(div2);
+          definitionCard.appendChild(definitionNyms);
+
+          definitionBar.appendChild(definitionCard);
+          // console.log(definitionNyms);
         });
-        // console.log(element.partOfSpeech);
-        // document.querySelector("").innerText = ;
 
+        definitionBatch.appendChild(definitionBar);
+        definitionResult.appendChild(definitionBatch);
       });
-      // document.querySelector("").innerText = ;
-
 
     });
 }

@@ -1,0 +1,34 @@
+
+:root {
+  --color1: rgb(64, 77, 255);
+
+  --color2: rgba(204, 204, 204);
+  --color2-lt: rgba(204, 204, 204, 0.8);
+  --color2-md: rgba(204, 204, 204, 0.5);
+  --color2-xlt: rgba(204, 204, 204, 0.2);
+
+  /* --color1-1: rgb(64, 77, 255, 0.2); */
+  /* --color1: #404eff; */
+
+  --topHeight: 60px;
+}
+
+#mainBodyt {
+  color: var(--color1);
+  padding: 6px;
+  margin: 12px;
+  max-width: 1300px;
+  border: var(--color2) 2px solid;
+  border-radius: 3px;
+}
+
+#postTitle{
+  margin-bottom: 12px;
+}
+
+@media screen and (min-width: 800px) {
+  #mainBodyt {
+    margin-top: 12px;
+    margin: auto;
+  }
+}
