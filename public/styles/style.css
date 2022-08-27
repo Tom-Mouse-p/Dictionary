@@ -385,6 +385,10 @@ a {
   margin-top: 6px;
 }
 
+.antonyms{
+  overflow: wrap;
+}
+
 footer {
   background: var(--color1);
   color: #fff;
